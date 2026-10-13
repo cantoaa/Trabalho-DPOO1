@@ -13,7 +13,7 @@ class ViewAtendimento:
     def mostrar_menu(self, opcoes : str, switch : dict):
         while True:
             print(opcoes)
-            opcao = int(input("Escolha uma opcao"))
+            opcao = int(input("Escolha uma opcao: "))
             sw = switch
             try:
                 sw[opcao]()

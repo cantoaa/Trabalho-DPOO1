@@ -7,9 +7,7 @@ class ViewProcedimento:
         print("Criando procedimento:")
         dados0 = input("Descrição do procedimento: ")
         dados1 = int(input("Custo do procedimento: "))
-        dados2 = input("Profissional Responsavel(Nome): ")
-        dados3 = int(input("Profissional Responsavel(CPF): "))
-        return [dados0,dados1,dados2,dados3]
+        return [dados0,dados1]
 
     def alterar_procedimento(self):
         print("Alterando procedimento:")
@@ -19,7 +17,7 @@ class ViewProcedimento:
     def mostrar_menu(self, opcoes : str, switch : dict):
         while True:
             print(opcoes)
-            opcao = int(input("Escolha uma opcao"))
+            opcao = int(input("Escolha uma opcao: "))
             sw = switch
             try:
                 sw[opcao]()

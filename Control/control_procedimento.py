@@ -15,7 +15,7 @@ class ControlProcedimento(Control):
 
     def criar_procedimento(self):
         dados = self.__tela.criar_procedimento()
-        self.__procedimentos.append(Procedimento(dados[0], dados[1], self.control_geral.control_profissional.buscar_profissional(dados[2], dados[3])))
+        self.__procedimentos.append(Procedimento(dados[0], dados[1], self.control_geral.control_profissional.buscar_profissional()))
         return dados
 
     def mostrar_procedimentos(self):
