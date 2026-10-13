@@ -36,6 +36,7 @@ class ControlClinica(Control):
                 if clinica.nome == dados["nome"] and clinica.localizacao == dados["localizacao"]:
                     self.__tela.mostrar_clinica(clinica)
                     return clinica
+        return None
 
     def iniciar(self):
         opcoes = "1.Cadastrar clinica\n2.Excluir clinica\n3.Listar clinicas\n4.Buscar clinica\n0.Sair"

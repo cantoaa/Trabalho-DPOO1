@@ -16,17 +16,14 @@ class ControlAtendimento(Control):
 
     def cadastrar_atendimento(self):
         dados = self.__tela.cadastrar_atendimento() 
-        if(dados["horario1"] < 24 & dados["horario1"] >= 0 & dados["horario2"] < 24 & dados["horario2"] >= 0 & dados["horario1"] < dados["horario2"]):
-            raise ValueError("Tentou-se inserir uma faixa de horario inexistente")
-        try:
-            atendimento = Atendimento(dados["clinica"], dados["paciente"], dados["profissional"], dados["data"], dados["horario1"], dados["horario2"], dados["tipo"], dados["valor"])
+        if(dados["horario1"] < 24 and dados["horario1"] >= 0 and dados["horario2"] < 24 and dados["horario2"] >= 0 and dados["horario1"] < dados["horario2"]):
+            atendimento = Atendimento(dados["clinica"], dados["paciente"], dados["profissional"], dados["data"], [dados["horario1"], dados["horario2"]], dados["tipo"], dados["valor"])
             self.__atendimentos.append(atendimento)
-        except:
-            raise ValueError("Erro ao criar o atendimento, por favor verifique os tipos dos parametros")
-        self.__atendimentos.append(atendimento)
+        else:
+            raise ValueError("Tentou-se inserir uma faixa de horario inexistente")
     def mostrar_atendimentos(self):
         if(len(self.__atendimentos) > 0):
-            self.__tela.listar_atendimentos()
+            self.__tela.listar_atendimentos(self.__atendimentos)
     def escolher_atendimento(self):
         if(len(self.__atendimentos) > 0):
             return self.__tela.escolher_atendimento(self.__atendimentos)

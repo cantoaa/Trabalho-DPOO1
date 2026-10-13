@@ -9,7 +9,7 @@ class ViewAtendimento:
             for i in range(len(atendimentos)):
                 print(f"{i}. Clinica: {atendimentos[i].clinica.nome}, Paciente: {atendimentos[i].paciente.nome}, Profissional: {atendimentos[i].profissional.nome}, Data: {atendimentos[i].data}, Horário: {atendimentos[i].horario}, Tipo: {atendimentos[i].tipo}, Valor: {atendimentos[i].valor}")
         else:
-            print(f"{i}. Clinica: {atendimentos[i].clinica.nome}, Paciente: {atendimentos[0].paciente.nome}, Profissional: {atendimentos[0].profissional.nome}, Data: {atendimentos[0].data}, Horário: {atendimentos[0].horario}, Tipo: {atendimentos[0].tipo}, Valor: {atendimentos[0].valor}")
+            print(f"{0}. Clinica: {atendimentos[0].clinica.nome}, Paciente: {atendimentos[0].paciente.nome}, Profissional: {atendimentos[0].profissional.nome}, Data: {atendimentos[0].data}, Horário: {atendimentos[0].horario}, Tipo: {atendimentos[0].tipo}, Valor: {atendimentos[0].valor}")
     def mostrar_menu(self, opcoes : str, switch : dict):
         while True:
             print(opcoes)

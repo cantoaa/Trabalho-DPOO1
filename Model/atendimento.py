@@ -6,7 +6,7 @@ from Model.procedimento import Procedimento
 
 class Atendimento:
     def __init__(self, clinica : Clinica, paciente : Paciente, profissional : Profissional, data : tuple, horario : list, tipo : str, valor : int):
-        if(isinstance(clinica, Clinica) & isinstance(paciente, Paciente) & isinstance(profissional, Profissional) & isinstance(data, tuple) & isinstance(horario,list) & len(horario) == 2 & horario[0] < 24 & horario[0] >= 0 & horario[1] < 24 & horario[1] >= 0 & horario[0] < horario[1] & isinstance(tipo,str) & isinstance(valor,int)):
+        if(isinstance(clinica, Clinica) and isinstance(paciente, Paciente) and isinstance(profissional, Profissional) and isinstance(data, tuple) and isinstance(horario,list) and len(horario) == 2 and horario[0] < 24 and horario[0] >= 0 and horario[1] < 24 and horario[1] >= 0 and horario[0] < horario[1] and isinstance(tipo,str) and isinstance(valor,int)):
             self.__clinica = clinica
             self.__paciente = paciente
             self.__profissional = profissional

@@ -25,6 +25,7 @@ class ControlProfissional(Control):
                 if profissional.cpf == cpf:
                     self.__tela.mostrar_profissional(profissional)
                     return profissional 
+        return None
 
     def excluir_profissional(self):
         if(len(self.__profissionais) > 0):

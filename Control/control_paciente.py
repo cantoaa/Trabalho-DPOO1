@@ -35,3 +35,4 @@ class ControlPaciente(Control):
                 if paciente.cpf == cpf:
                     self.__tela.mostrar_paciente(paciente)
                     return paciente
+        return None
