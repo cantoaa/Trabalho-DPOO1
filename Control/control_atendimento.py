@@ -41,13 +41,14 @@ class ControlAtendimento(Control):
 
     def alterar_profatendimento(self):
         index = self.escolher_atendimento()
-        prof = control_geral.control_profissional.buscar_profissional()
+        prof = self.control_geral.control_profissional.buscar_profissional()
         self.__atendimentos[index].profissional = prof
 
     def adicionar_procedimento(self):
-        atendimento = self.__tela.escolher_atendimento()
+        atendimento = self.__tela.escolher_atendimento(self.__atendimentos)
         proced = self.control_geral.control_procedimento.escolher_procedimento()
         self.__atendimentos[atendimento].procedimentos.append(self.control_geral.control_procedimento.procedimentos[proced])
+        self.__atendimentos[atendimento].valor += self.__atendimentos[atendimento].procedimentos[-1].valor
     def excluir_atendimento(self):
         if(len(self.__atendimentos) > 0):
-            del self.__atendimentos[self.__tela.escolher_atendimento()]
+            del self.__atendimentos[self.__tela.escolher_atendimento(self.__atendimentos)]
