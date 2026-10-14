@@ -12,6 +12,7 @@ class ViewAtendimento:
             print(f"{0}. Clinica: {atendimentos[0].clinica.nome}, Paciente: {atendimentos[0].paciente.nome}, Profissional: {atendimentos[0].profissional.nome}, Data: {atendimentos[0].data}, Horário: {atendimentos[0].horario}, Tipo: {atendimentos[0].tipo}, Valor: {atendimentos[0].valor}")
     def mostrar_menu(self, opcoes : str, switch : dict):
         while True:
+            print("---------------Atendimentos-----------------")
             print(opcoes)
             opcao = int(input("Escolha uma opcao: "))
             sw = switch

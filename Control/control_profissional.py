@@ -36,7 +36,7 @@ class ControlProfissional(Control):
             self.__tela.listar_profissionais(self.__profissionais)
 
     def iniciar(self):
-        opcoes = "1.Cadastrar profissional\n2.Buscar profissional\n3.Excluir profissional\n4.Listar Profissionais\n0.Sair"
+        opcoes = "1.Cadastrar profissional\n2.Buscar profissional\n3.Excluir profissional\n4.Listar Profissionais\n0.Sair(Voltar para o menu principal)"
         switch = {1 : self.cadastrar_profissional, 2 : self.buscar_profissional, 3 : self.excluir_profissional, 4 : self.listar_profissionais, 0 : self.sair}
         self.__tela.mostrar_menu(opcoes, switch)
     def sair(self):

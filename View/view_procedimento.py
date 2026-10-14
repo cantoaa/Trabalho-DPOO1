@@ -16,6 +16,7 @@ class ViewProcedimento:
         return [dados1, dados2]
     def mostrar_menu(self, opcoes : str, switch : dict):
         while True:
+            print("-------------Procedimento---------------")
             print(opcoes)
             opcao = int(input("Escolha uma opcao: "))
             sw = switch

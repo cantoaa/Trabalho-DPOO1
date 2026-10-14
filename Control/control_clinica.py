@@ -39,7 +39,7 @@ class ControlClinica(Control):
         return None
 
     def iniciar(self):
-        opcoes = "1.Cadastrar clinica\n2.Excluir clinica\n3.Listar clinicas\n4.Buscar clinica\n0.Sair"
+        opcoes = "1.Cadastrar clinica\n2.Excluir clinica\n3.Listar clinicas\n4.Buscar clinica\n0.Sair(Voltar para o menu principal)"
         switch = {1 : self.cadastrar_clinica, 2 : self.excluir_clinica,3 : self.listar_clinicas, 4 : self.buscar_clinica,0 : self.sair}
         self.__tela.mostrar_menu(opcoes, switch)
     def sair(self):

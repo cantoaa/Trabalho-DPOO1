@@ -45,19 +45,31 @@ class Atendimento:
 
     @clinica.setter
     def clinica(self, clinica : Clinica):
-        self.__clinica = clinica
+        if isinstance(clinica, Clinica):
+            self.__clinica = clinica
     @paciente.setter
     def paciente(self, paciente : Paciente):
-        self.__paciente = paciente
+        if isinstance(paciente, Paciente):
+            self.__paciente = paciente
     @profissional.setter
     def profissional(self, profissional : Profissional):
-        self.__profissional = profissional
+        if isinstance(profissional, Profissional):
+            self.__profissional = profissional
     @data.setter
     def data(self, data : tuple):
-        self.__data = data
+        if isinstance(data, tuple):
+            self.__data = data
     @horario.setter
     def horario(self, horario : list):
         if(len(horario) == 2 & horario[0] < 24 & horario[0] >= 0 & horario[1] < 24 & horario[1] >= 0 & horario[0] < horario[1]):
             self.__horario = horario
         else:
             raise ValueError("Tentou-se inserir uma faixa de horario inexistente")
+    @tipo.setter
+    def tipo(self, tipo : str):
+        if isinstance(tipo, str):
+            self.__tipo = tipo
+    @valor.setter
+    def valor(self, valor : int):
+        if isinstance(valor, int):
+            self.__valor = valor

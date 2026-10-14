@@ -48,7 +48,7 @@ class ControlAtendimento(Control):
         atendimento = self.__tela.escolher_atendimento(self.__atendimentos)
         proced = self.control_geral.control_procedimento.escolher_procedimento()
         self.__atendimentos[atendimento].procedimentos.append(self.control_geral.control_procedimento.procedimentos[proced])
-        self.__atendimentos[atendimento].valor += self.__atendimentos[atendimento].procedimentos[-1].valor
+        self.__atendimentos[atendimento].valor(self.__atendimentos[atendimento].valor + self.__atendimentos[atendimento].procedimentos[-1].custo)
     def excluir_atendimento(self):
         if(len(self.__atendimentos) > 0):
             del self.__atendimentos[self.__tela.escolher_atendimento(self.__atendimentos)]

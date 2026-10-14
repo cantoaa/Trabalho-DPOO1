@@ -41,7 +41,7 @@ class ControlProcedimento(Control):
             del self.__procedimentos[index]
 
     def iniciar(self):
-        opcoes = "1.Cadastrar procedimento\n2.Alterar procedimento\n3.Excluir procedimento\n4. Listar procedimentos\n0.Sair"
+        opcoes = "1.Cadastrar procedimento\n2.Alterar procedimento\n3.Excluir procedimento\n4. Listar procedimentos\n0.Sair(Voltar ao menu principal)"
         switch = {0 : self.sair, 1 : self.criar_procedimento, 2 : self.alterar_procedimento, 3 : self.excluir_procedimento, 4: self.mostrar_procedimentos, 0 : self.sair}
         self.__tela.mostrar_menu(opcoes, switch)
 

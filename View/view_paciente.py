@@ -5,7 +5,7 @@ class ViewPaciente:
 
     def mostrar_menu(self):
         while True:
-            print("\nMenu Paciente:")
+            print("------------Menu Paciente-------------")
             print("1. Cadastrar Paciente")
             print("2. Listar Pacientes")
             print("3. Buscar Paciente")
