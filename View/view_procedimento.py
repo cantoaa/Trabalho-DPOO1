@@ -35,3 +35,5 @@ class ViewProcedimento:
         opcao = int(input("Escolha um procedimento(numero): "))
         if(opcao >= 0 and opcao < len(procedimentos)):
             return opcao
+    def mostrar_procedimento(self, procedimento):
+        print(f"Descrição:{procedimento.descricao} Custo: {procedimento.custo} Profissional Responsavel(nome):{procedimento.profissional.nome}")

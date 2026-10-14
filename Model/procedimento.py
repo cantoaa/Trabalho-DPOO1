@@ -3,7 +3,7 @@ from Model.profissional import Profissional
 
 class Procedimento:
     def __init__(self, descricao : str, custo : int, profissional : Profissional):
-        if(isinstance(descricao,str) & isinstance(custo,int) & isinstance(profissional, Profissional)):
+        if(isinstance(descricao,str) and isinstance(custo,int) and isinstance(profissional, Profissional)):
             self.__descricao = descricao
             self.__custo = custo
             self.__profissional = profissional

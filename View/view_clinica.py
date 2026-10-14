@@ -27,10 +27,12 @@ class ViewClinica:
         dados["localizacao"] = input("Insira a localizacao da clinica: ")
         return dados
     def criar_clinica(self):
-        dados = {"nome" : "", "localizacao" : "", "descricao" : ""}
+        dados = {"nome" : "", "localizacao" : "", "descricao" : "", "horario1" : 0, "horario2" : 0}
         dados["nome"] = input("Nome da clinica: ")
         dados["localizacao"] = input("Localização da clinica: ")
         dados["descricao"] = input("Descrição da clinica: ")
+        dados["horario1"] = int(input("Horario quando a clinica abre: "))
+        dados["horario2"] = int(input("Horario quando a clinica fecha: "))
         return dados
     def escolher_clinica(self, clinicas):
         self.listar_clinicas(clinicas)
@@ -41,4 +43,4 @@ class ViewClinica:
             print("Opção invalida")
         return None
     def mostrar_clinica(self, clinica):
-        print(f"Clinica encontrada: Nome: {clinica.nome} Localização: {clinica.localizacao} Descrição: {clinica.descricao}")
+        print(f"Clinica encontrada: Nome: {clinica.nome} Localização: {clinica.localizacao} Descrição: {clinica.descricao} Horario(abertura): {clinica.horario[0]} Horario(fechamento) : {clinica.horario[1]}")

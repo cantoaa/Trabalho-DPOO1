@@ -11,7 +11,7 @@ class ControlClinica(Control):
 
     def cadastrar_clinica(self):
         dados = self.__tela.criar_clinica()
-        self.__clinicas.append(Clinica(dados["nome"],dados["localizacao"], dados["descricao"]))
+        self.__clinicas.append(Clinica(dados["nome"],dados["localizacao"], dados["descricao"], [dados["horario1"],dados["horario2"]]))
 
     def listar_clinicas(self):
         if(len(self.__clinicas) > 0):
@@ -28,7 +28,10 @@ class ControlClinica(Control):
         if(len(self.__clinicas) > 0):
             clinica = self.__tela.escolher_clinica(self.__clinicas)
             return clinica
-
+    def alterar_clinica(self):
+        index = self.escolher_clinica()
+        dados = self.__tela.criar_clinica()
+        self.__clinicas[index] = Clinica(dados["nome"],dados["localizacao"],dados["descricao"], [dados["horario1"], dados["horario2"]])
     def buscar_clinica(self):
         if(len(self.__clinicas) > 0):
             dados = self.__tela.buscar_clinica()
@@ -39,8 +42,8 @@ class ControlClinica(Control):
         return None
 
     def iniciar(self):
-        opcoes = "1.Cadastrar clinica\n2.Excluir clinica\n3.Listar clinicas\n4.Buscar clinica\n0.Sair(Voltar para o menu principal)"
-        switch = {1 : self.cadastrar_clinica, 2 : self.excluir_clinica,3 : self.listar_clinicas, 4 : self.buscar_clinica,0 : self.sair}
+        opcoes = "1.Cadastrar clinica\n2.Excluir clinica\n3.Listar clinicas\n4.Buscar clinica\n5.Alterar clinica\n0.Sair(Voltar para o menu principal)"
+        switch = {1 : self.cadastrar_clinica, 2 : self.excluir_clinica,3 : self.listar_clinicas, 4 : self.buscar_clinica, 5 : self.alterar_clinica,0 : self.sair}
         self.__tela.mostrar_menu(opcoes, switch)
     def sair(self):
         self.control_geral.iniciar()

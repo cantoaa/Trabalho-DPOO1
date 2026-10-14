@@ -28,8 +28,8 @@ class ControlAtendimento(Control):
         if(len(self.__atendimentos) > 0):
             return self.__tela.escolher_atendimento(self.__atendimentos)
     def iniciar(self):
-        opcoes = "1. Mostrar Atendimentos\n2.Cadastrar Atendimento\n3.Excluir Atendimento\n4.Alterar Atendimento\n5. Listar atendimentos\n0.Sair(Voltar ao menu principal)"
-        switch = {0 : self.sair, 1 : self.mostrar_atendimentos, 2 : self.cadastrar_atendimento, 3 : self.excluir_atendimento, 4:self.alterar_atendimento, 5 : self.mostrar_atendimentos,0 : self.sair}
+        opcoes = "1. Mostrar Atendimentos\n2.Cadastrar Atendimento\n3.Excluir Atendimento\n4.Alterar Atendimento\n5. Listar atendimentos\n6. Mostrar procedimentos realizados\n7.Mostrar atendimento mais caro e o mais barato\n0.Sair(Voltar ao menu principal)"
+        switch = {0 : self.sair, 1 : self.mostrar_atendimentos, 2 : self.cadastrar_atendimento, 3 : self.excluir_atendimento, 4:self.alterar_atendimento, 5 : self.mostrar_atendimentos, 6 : self.mostrar_procedimentos, 7 : self.atendimento_mais_carobarato,0 : self.sair}
         self.__tela.mostrar_menu(opcoes,switch)
     def sair(self):
         self.control_geral.iniciar()
@@ -49,6 +49,30 @@ class ControlAtendimento(Control):
         proced = self.control_geral.control_procedimento.escolher_procedimento()
         self.__atendimentos[atendimento].procedimentos.append(self.control_geral.control_procedimento.procedimentos[proced])
         self.__atendimentos[atendimento].valor(self.__atendimentos[atendimento].valor + self.__atendimentos[atendimento].procedimentos[-1].custo)
+    def mostrar_procedimentos(self):
+        index = self.escolher_atendimento()
+        self.__tela.mostrar_procedimentos(self.__atendimentos[index])
+    #def mostrar_clinica_mais_atend(self):
+    #    for atendimento in self.__atendimentos:
+    #        clinicas = []
+    #        if(atendimento.clinica not in clinicas):
+    #            clinicas.append()
+    # Depois implementar
+    def atendimento_mais_carobarato(self):
+        atendimento_anterior = 0
+        atendimento_caro = 0
+        atendimento_barato = 0
+        for atendimento in self.__atendimentos:
+            if(atendimento.valor >= atendimento_anterior):
+                atendimento_caro = atendimento
+            atendimento_anterior = atendimento.valor
+        atendimento_anterior = self.__atendimentos[0].valor
+        for atendimento in self.__atendimentos:
+            if(atendimento.valor <= atendimento_anterior):
+                atendimento_barato = atendimento
+            atendimento_anterior = atendimento.valor
+        self.__tela.mostrar_atendimento(atendimento_caro)
+        self.__tela.mostrar_atendimento(atendimento_barato)
     def excluir_atendimento(self):
         if(len(self.__atendimentos) > 0):
             del self.__atendimentos[self.__tela.escolher_atendimento(self.__atendimentos)]

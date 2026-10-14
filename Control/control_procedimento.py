@@ -41,9 +41,23 @@ class ControlProcedimento(Control):
             del self.__procedimentos[index]
 
     def iniciar(self):
-        opcoes = "1.Cadastrar procedimento\n2.Alterar procedimento\n3.Excluir procedimento\n4. Listar procedimentos\n0.Sair(Voltar ao menu principal)"
-        switch = {0 : self.sair, 1 : self.criar_procedimento, 2 : self.alterar_procedimento, 3 : self.excluir_procedimento, 4: self.mostrar_procedimentos, 0 : self.sair}
+        opcoes = "1.Cadastrar procedimento\n2.Alterar procedimento\n3.Excluir procedimento\n4. Listar procedimentos\n5.Mostrar procedimento mais caro e mais barato\n0.Sair(Voltar ao menu principal)"
+        switch = {0 : self.sair, 1 : self.criar_procedimento, 2 : self.alterar_procedimento, 3 : self.excluir_procedimento, 4: self.mostrar_procedimentos, 5 : self.proced_mais_carobarato, 0 : self.sair}
         self.__tela.mostrar_menu(opcoes, switch)
-
+    def proced_mais_carobarato(self):
+        proced_anterior = 0
+        proced_caro = 0
+        proced_barato = 0
+        for proced in self.__procedimentos:
+            if(proced.custo >= proced_anterior):
+                proced_caro = proced
+            proced_anterior = proced.custo
+        proced_anterior = self.__procedimentos[0].custo
+        for proced in self.__procedimentos:
+            if(proced.custo <= proced_anterior):
+                proced_barato = proced
+            proced_anterior = proced.custo
+        self.__tela.mostrar_procedimento(proced_caro)
+        self.__tela.mostrar_procedimento(proced_barato)
     def sair(self):
         self.control_geral.iniciar()

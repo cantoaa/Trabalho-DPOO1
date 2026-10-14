@@ -10,7 +10,7 @@ class ControlPaciente(Control):
 
     def cadastrar_paciente(self):
         dados = self.__tela.cadastrar_paciente()
-        self.__pacientes.append(Paciente(dados[0],dados[1],dados[2]))
+        self.__pacientes.append(Paciente(dados[0],dados[1],dados[2],dados[3]))
     def listar_pacientes(self):
         if(len(self.__pacientes) > 0):
             self.__tela.listar_pacientes(self.__pacientes)
@@ -36,3 +36,7 @@ class ControlPaciente(Control):
                     self.__tela.mostrar_paciente(paciente)
                     return paciente
         return None
+    def alterar_paciente(self):
+        index = self.escolher_paciente()
+        dados = self.cadastrar_paciente()
+        self.__pacientes[index] = Paciente(dados[0],dados[1],dados[2],dados[3])

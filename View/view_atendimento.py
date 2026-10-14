@@ -34,10 +34,21 @@ class ViewAtendimento:
         control_geral = self.control_atendimento.control_geral
         dados["horario1"] = int(input("Digite o horario inicial do atendimento: "))
         dados["horario2"] = int(input("Digite o horario final do atendimento: "))
-        dados["data"] = (int(input("Digite o dia do atendimento: ")), int(input("Digite o mes do atendimento: ")), int(input("Digite o ano do atendimento: ")))
         dados["clinica"] = control_geral.control_clinica.buscar_clinica()
+        if(dados["horario1"] < dados["clinica"].horario[0] or dados["horario1"] > dados["clinica"].horario[1] or dados["horario2"] > dados["clinica"].horario[1] or dados["horario2"] < dados["clinica"].horario[0]):
+            print("Não é possivel realizar o atendimento, pois não está no horario de atendimento da clinica.")
+        dados["data"] = (int(input("Digite o dia do atendimento: ")), int(input("Digite o mes do atendimento: ")), int(input("Digite o ano do atendimento: ")))
         dados["paciente"] = control_geral.control_paciente.buscar_paciente()
+        if(dados["paciente"].idade < 18):
+            print("Não é possivel um paciente menor de 18 anos fazer um atendimento.")
+            return None
         dados["profissional"] = control_geral.control_profissional.buscar_profissional()
         dados["tipo"] = input("Digite o tipo do atendimento: ")
         dados["valor"] = int(input("Digite o valor do atendimento: "))
         return dados
+    def mostrar_procedimentos(self, atendimento):
+        procedimentos = atendimento.procedimentos
+        for procedimento in procedimentos:
+            print(f"Descrição: {procedimento.descricao} Custo: {procedimento.custo} Profissional(Nome): {procedimento.profissional}")
+    def mostrar_atendimento(self, atendimento):
+        print(f"Clinica: {atendimento.clinica.nome}, Paciente: {atendimento.paciente.nome}, Profissional: {atendimento.profissional.nome}, Data: {atendimento.data}, Horário: {atendimento.horario}, Tipo: {atendimento.tipo}, Valor: {atendimento.valor}")
