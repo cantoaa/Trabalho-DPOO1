@@ -5,8 +5,8 @@ from Model.procedimento import Procedimento
 
 
 class Atendimento:
-    def __init__(self, clinica : Clinica, paciente : Paciente, profissional : Profissional, data : tuple, horario : list, tipo : str, valor : int):
-        if(isinstance(clinica, Clinica) and isinstance(paciente, Paciente) and isinstance(profissional, Profissional) and isinstance(data, tuple) and isinstance(horario,list) and len(horario) == 2 and horario[0] < 24 and horario[0] >= 0 and horario[1] < 24 and horario[1] >= 0 and horario[0] < horario[1] and isinstance(tipo,str) and isinstance(valor,int)):
+    def __init__(self, clinica : Clinica, paciente : Paciente, profissional : Profissional, data : tuple, horario : list, tipo : str, valor : int, index : int):
+        if(isinstance(clinica, Clinica) and isinstance(paciente, Paciente) and isinstance(profissional, Profissional) and isinstance(data, tuple) and isinstance(horario,list) and len(horario) == 2 and horario[0] < 24 and horario[0] >= 0 and horario[1] < 24 and horario[1] >= 0 and horario[0] < horario[1] and isinstance(tipo,str) and isinstance(valor,int) and isinstance(index, int) and index >= 0):
             self.__clinica = clinica
             self.__paciente = paciente
             self.__profissional = profissional
@@ -15,9 +15,13 @@ class Atendimento:
             self.__tipo = tipo
             self.__valor = valor
             self.__procedimentos = []
+            self.__index = index
         else:
             raise ValueError("Os valores enviados como parametros para o construtor de Clinica tem tipos diferentes dos requisitados")
 
+    @property
+    def index(self) -> int:
+        return self.__index
     @property
     def clinica(self) -> Clinica:
         return self.__clinica
@@ -73,3 +77,7 @@ class Atendimento:
     def valor(self, valor : int):
         if isinstance(valor, int):
             self.__valor = valor
+    @index.setter
+    def index(self, index : int):
+        if isinstance(index, int):
+            self.__index = index
