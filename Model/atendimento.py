@@ -2,6 +2,7 @@ from Model.clinica import Clinica
 from Model.paciente import Paciente
 from Model.profissional import Profissional
 from Model.procedimento import Procedimento
+from Model.pagamento import Pagamento
 
 
 class Atendimento:
@@ -16,6 +17,7 @@ class Atendimento:
             self.__valor = valor
             self.__procedimentos = []
             self.__index = index
+            self.__pagamento = None
         else:
             raise ValueError("Os valores enviados como parametros para o construtor de Clinica tem tipos diferentes dos requisitados")
 
@@ -46,6 +48,9 @@ class Atendimento:
     @property
     def procedimentos(self):
         return self.__procedimentos
+    @property
+    def pagamento(self) -> Pagamento:
+        return self.__pagamento
 
     @clinica.setter
     def clinica(self, clinica : Clinica):
@@ -81,3 +86,7 @@ class Atendimento:
     def index(self, index : int):
         if isinstance(index, int):
             self.__index = index
+    @pagamento.setter
+    def pagamento(self, pagamento : Pagamento):
+        if isinstance(pagamento, Pagamento):
+            self.__pagamento = pagamento

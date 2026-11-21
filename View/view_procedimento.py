@@ -18,11 +18,11 @@ class ViewProcedimento:
         while True:
             print("-------------Procedimento---------------")
             print(opcoes)
-            opcao = int(input("Escolha uma opcao: "))
             sw = switch
             try:
+                opcao = int(input("Escolha uma opcao: "))
                 sw[opcao]()
-            except ValueError:
+            except (ValueError, KeyError):
                 print("Opcao invalida.")
     def listar_procedimentos(self, procedimentos):
         if(len(procedimentos) > 1):

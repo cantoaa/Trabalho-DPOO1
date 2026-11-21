@@ -1,4 +1,4 @@
-from AbstractDAO import AbstractDAO
+from DAO.AbstractDAO import AbstractDAO
 from Model.paciente import Paciente
 
 class PacienteDAO(AbstractDAO):

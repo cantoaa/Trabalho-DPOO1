@@ -4,14 +4,14 @@ import pickle
 class AbstractDAO(ABC):
     def __init__(self, datasource=''):
         self.__cache = {}
-        self.__datasource
+        self.__datasource = datasource
         try:
             self.__load()
         except FileNotFoundError:
             self.__dump()
 
     def __dump(self):
-        pickel.dump(self.__cache, open(self.__datasource, 'wb'))
+        pickle.dump(self.__cache, open(self.__datasource, 'wb'))
 
     def __load(self):
         self.__cache = pickle.load(open(self.__datasource, 'rb'))

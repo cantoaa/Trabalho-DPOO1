@@ -15,10 +15,10 @@ class ViewClinica:
         while True:
             print("------------------Clinica----------------")
             print(opcoes)
-            opcao = int(input("Escolha uma opção: "))
             try:
+                opcao = int(input("Escolha uma opção: "))
                 switch[opcao]()
-            except ValueError:
+            except (ValueError, KeyError):
                 print("Opção invalida")
 
     def buscar_clinica(self):

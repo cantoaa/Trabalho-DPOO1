@@ -15,11 +15,11 @@ class ViewProfissional:
         while True:
             print("------------------Profissional-------------")
             print(opcoes)
-            opcao = int(input("Escolha uma opcao: "))
             sw = switch
             try:
+                opcao = int(input("Escolha uma opcao: "))
                 sw[opcao]()
-            except ValueError:
+            except (ValueError, KeyError):
                 print("Opcao invalida.")
 
     def criar_profissional(self):

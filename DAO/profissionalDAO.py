@@ -1,5 +1,5 @@
 
-from AbstractDAO import AbstractDAO
+from DAO.AbstractDAO import AbstractDAO
 from Model.profissional import Profissional
 
 class ProfissionalDAO(AbstractDAO):

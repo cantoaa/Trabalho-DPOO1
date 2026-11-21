@@ -1,4 +1,4 @@
-from AbstractDAO import AbstractDAO
+from DAO.AbstractDAO import AbstractDAO
 from Model.atendimento import Atendimento
 
 class AtendimentoDAO(AbstractDAO):
@@ -7,7 +7,7 @@ class AtendimentoDAO(AbstractDAO):
 
     def add(self, atendimento : Atendimento):
         if(isinstance(atendimento, Atendimento)):
-            super().add(paciente.cpf, paciente)
+            super().add(atendimento.index, atendimento)
 
     def get(self, key : int):
         if(isinstance(key,int)):
